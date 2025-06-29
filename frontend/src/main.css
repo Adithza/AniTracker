@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.input-style {
+    @apply bg-gray-800 rounded-md h-[40px]
+}

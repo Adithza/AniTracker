@@ -7,7 +7,7 @@ const Navbar = () => {
         <img src='A.svg' className='h-9/10 ml-4'/>
         <div className='pt-2.5 text-xl flex w-full mr-5 space-x-4'>
             <a><Link to={"/"}>AniTracker</Link></a>
-            <a className='ml-auto'>Login/Register</a>
+            <a className='ml-auto'><Link to={"/login"}>Login/Register</Link></a>
             <a><Link to={"/about"}>About</Link></a>
         </div>
     </div>

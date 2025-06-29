@@ -16,11 +16,11 @@ const Mainpage = () => {
         slidesToScroll: 1
       };
 
-    const { newAnime, fetchNewAnime } = useAnimeStore();
+    const { newAnime, fetchData } = useAnimeStore();
 
     useEffect(() =>  {
-        fetchNewAnime();
-      }, [fetchNewAnime]);
+        fetchData("new");
+      }, [fetchData]);
 
     const newFiltered = newAnime.filter((anime, index, self) => index=== self.findIndex((a) => a.mal_id === anime.mal_id));
 
@@ -55,7 +55,11 @@ const Mainpage = () => {
       <h1 className='text-3xl m-10 ml-20 mr-15 xl:ml-45 xl:mr-55 lg:ml-35 lg:mr-30'>Upcoming Anime</h1>
       <div>
         <SmallSlider width={winWidth} type={"upcoming"}/>
-      </div>  
+      </div>
+      <h1 className='text-3xl m-10 ml-20 mr-15 xl:ml-45 xl:mr-55 lg:ml-35 lg:mr-30'>Top Anime</h1>
+      <div>
+        <SmallSlider width={winWidth} type={"top"}/>
+      </div>    
     </>
   )
 }

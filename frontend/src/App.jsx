@@ -5,6 +5,8 @@ import Navbar from './Components/Navbar'
 import Mainpage from './pages/Mainpage'
 import { Routes, Route } from 'react-router'
 import About from './pages/About'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 function App() {
 
@@ -15,6 +17,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Mainpage />} />
           <Route path='/about' element={<About />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+
         </Routes>
     </div>
       
