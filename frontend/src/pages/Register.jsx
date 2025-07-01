@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
+import { useAuthStore } from '../assets/authStore'
+
 
 const Register = () => {
+
+  const { register, isLoading, isAuthenticated, user } = useAuthStore(); 
 
   const [data, setData] = useState({
     email: '',
@@ -101,17 +105,10 @@ const Register = () => {
     console.log("request sent")
 
     try {
-      const response = await fetch("http://localhost:3000/auth", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({email: data.email, username: data.username, password: data.pass})
-      })
-  
-      const responseText = await response.text();
-      console.log(responseText)
+      const response = await register(data.email, data.username, data.pass);
+      console.log(response)
     } catch(error) {
+      alert(error.message)
       console.error("Error:", error)
     }
 
@@ -130,7 +127,7 @@ const Register = () => {
           <input type='password' value={data.pass} name='pass' onChange={handleChange} className='input-style'/>
           <label>Confirm Password<span className='ml-5 text-red-500 text-sm'>{(errors.passCon)}</span></label>
           <input type='password' value={data.passCon} name='passCon' onChange={handleChange} className='input-style'/>
-          <input type='submit' className=' border-2 mt-4 text-xl p-3 rounded-xl w-40' value={'Register'}/>
+          <input type='submit' className=' border-2 mt-4 text-xl p-3 rounded-xl w-40' value={(isLoading) ? "Loading..." : "Register"}/>
         </form>
 
       </div>
